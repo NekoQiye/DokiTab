@@ -1,0 +1,73 @@
+.neko-pet {
+  position: fixed;
+  bottom: 28px;
+  z-index: 60;
+  transform-origin: 50% 100%;
+  animation: nekoSwing 4s ease-in-out infinite alternate;
+  pointer-events: auto;
+}
+
+.neko-img {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 10px 28px rgba(0,0,0,0.45));
+}
+
+@keyframes nekoSwing {
+  0% { transform: rotate(calc(var(--neko-swing-range, 3deg) * -1)) scale(var(--neko-scale, 1)); }
+  100% { transform: rotate(var(--neko-swing-range, 3deg)) scale(var(--neko-scale, 1)); }
+}
+
+.neko-pet:hover { animation-play-state: paused; }
+
+.neko-pet::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 24px;
+  background: radial-gradient(closest-side, rgba(164, 202, 254, 0.0), rgba(164, 202, 254, 0.35)),
+              conic-gradient(from 180deg, rgba(164, 202, 254, 0.6), rgba(251, 207, 232, 0.6));
+  filter: blur(14px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.neko-pet:hover::before { opacity: 0.65; }
+
+.neko-bubble {
+  position: absolute;
+  bottom: 110px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: #fdeeff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  backdrop-filter: blur(10px) saturate(160%);
+  background: linear-gradient(180deg, rgba(157, 215, 255, 0.45), rgba(253, 238, 255, 0.35));
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+  transform: translateX(var(--bubble-x, 0px)) translateY(0);
+  animation: bubbleAppear 0.3s ease-out both;
+}
+
+.neko-bubble.side-right { left: calc(100% - 4px); --bubble-x: 8px; }
+.neko-bubble.side-left { right: calc(100% - 4px); --bubble-x: -8px; }
+
+@keyframes bubbleAppear {
+  0% { transform: translateX(var(--bubble-x)) translateY(10px); opacity: 0; }
+  100% { transform: translateX(var(--bubble-x)) translateY(0); opacity: 1; }
+}
+
+.neko-bubble.closing { animation: bubbleExit 0.5s ease forwards; }
+
+@keyframes bubbleExit {
+  0% { opacity: 1; transform: translateX(var(--bubble-x)) translateY(0); }
+  100% { opacity: 0; transform: translateX(var(--bubble-x)) translateY(-6px); }
+}
+
+@media (max-width: 768px) {
+  .neko-pet.hide-on-small {
+    display: none !important;
+  }
+}

@@ -1,0 +1,101 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 6px 10px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 50;
+  border-radius: 18px; /* 如果需要，覆盖此特定组件的全局玻璃圆角 */
+}
+
+.search-container:hover, 
+.search-container:focus-within {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.engine-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  margin-left: 6px;
+}
+
+.search-engine-select {
+  background: transparent !important;
+  border: none !important;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+  padding: 0 8px;
+  height: 30px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 8px !important;
+  width: auto !important;
+  max-width: 120px;
+  appearance: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.search-engine-select:hover {
+  color: white;
+}
+
+.search-engine-select option {
+  background: #fff;
+  color: #111;
+  padding: 10px;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent !important;
+  border: none !important;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0 12px;
+  height: 40px;
+  outline: none;
+  box-shadow: none !important;
+  width: 100% !important; /* 确保占满宽度但遵循 flex 布局 */
+  min-width: 0; /* 允许收缩 */
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0 12px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 12px 12px 0;
+  flex-shrink: 0; /* 防止按钮收缩/消失 */
+}
+
+.search-button:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+.search-button:active {
+  transform: scale(0.95);
+}
+.search-container.dark {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255,255,255,0.12);
+}

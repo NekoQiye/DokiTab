@@ -1,0 +1,238 @@
+.dock-container {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  gap: 16px;
+  padding: 16px 24px;
+  border-radius: 32px;
+  z-index: 100;
+  width: auto;
+  max-width: 90vw;
+  overflow: visible;
+  scrollbar-width: none;
+
+  animation: dockSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.dock-hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translate(-50%, 30px) !important;
+}
+
+.dock-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari 浏览器 */
+}
+
+.dock-item {
+  width: var(--icon-size, 56px);
+  height: var(--icon-size, 56px);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+.dock-item img {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.dock-context-menu {
+  position: fixed;
+  min-width: 180px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+  padding: 6px;
+  z-index: 1000;
+}
+.dock-context-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.dock-context-item:hover { background: rgba(255,255,255,0.12); }
+.dock-context-item.delete { color: #f472b6; }
+
+.dock-icon-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.dock-label {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
+  line-height: 1.2;
+  padding: 0 6px;
+  word-break: break-word;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+  pointer-events: none;
+}
+
+/* 编辑模式下的控件 */
+.dock-edit-btn {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+.dock-edit-btn.delete { background: #ef4444; top: 6px; left: 6px; }
+.dock-edit-btn.edit { background: #3b82f6; bottom: 6px; right: 6px; }
+
+.dock-hit-area {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  z-index: 21;
+  cursor: pointer;
+}
+.dock-hit-area.delete { top: 0; left: 0; }
+.dock-hit-area.edit { bottom: 0; right: 0; }
+
+.dock-add-item {
+  width: var(--icon-size, 56px);
+  height: var(--icon-size, 56px);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.dock-add-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+.dock-item:not(.animate-wiggle):hover {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  transform: scale(var(--hover-scale, 1.08));
+}
+
+
+/* 提示气泡 */
+.dock-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%) translateY(4px);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  backdrop-filter: blur(var(--tip-blur, 8px));
+  -webkit-backdrop-filter: blur(var(--tip-blur, 8px));
+  will-change: backdrop-filter;
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 编辑模式抖动动画 */
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.25s ease-in-out infinite;
+  cursor: default;
+}
+
+@keyframes dockSlideUp {
+  from {
+    transform: translate(-50%, 30px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+/* 提示气泡结束 */
+/* 添加/删除动画 */
+@keyframes dockScaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.animate-scale-in { animation: dockScaleIn 0.22s ease-out both; }
+
+@keyframes dockFadeOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.9); opacity: 0; }
+}
+.animate-fade-out { animation: dockFadeOut 0.22s ease-in both; }
+
+/* 弹窗快速退出动画 */
+.edit-modal.closing {
+  animation: modalExit 0.22s ease forwards;
+}
+
+@keyframes modalExit {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.02); opacity: 0; }
+}
+
+.top-layer { z-index: 100001 !important; }

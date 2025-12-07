@@ -1,0 +1,365 @@
+
+/* 时钟样式 */
+
+.clock-digit-wrapper {
+  display: inline-block;
+  position: relative;
+  min-width: 0.45em; /* 从 0.55em 减小 */
+  height: 1.2em;
+  vertical-align: bottom;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 特殊处理分隔符（如冒号） */
+.clock-digit-wrapper.is-separator {
+  min-width: 0.2em;
+  width: auto;
+  margin: 0 0.05em;
+}
+
+.clock-digit-wrapper.is-digit {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.clock-digit-content {
+  display: inline-block;
+  backface-visibility: hidden;
+  width: 100%; /* 确保内容填充容器以居中 */
+}
+
+/* ==============================
+   动画：滑动
+   ============================== */
+@keyframes slideOutUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100%); opacity: 0; }
+}
+@keyframes slideInUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.anim-slide-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: slideOutUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.anim-slide-in {
+  position: relative;
+  animation: slideInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ==============================
+   动画：翻转
+   ============================== */
+.clock-digit-wrapper.flip-mode {
+  overflow: visible;
+  perspective: 400px;
+}
+@keyframes flipOut {
+  from { transform: rotateX(0deg); opacity: 1; }
+  to { transform: rotateX(90deg); opacity: 0; }
+}
+@keyframes flipIn {
+  from { transform: rotateX(-90deg); opacity: 0; }
+  to { transform: rotateX(0deg); opacity: 1; }
+}
+.anim-flip-out {
+  position: absolute;
+  top: 0; left: 0;
+  transform-origin: center bottom;
+  animation: flipOut 0.3s ease-in forwards;
+}
+.anim-flip-in {
+  position: relative;
+  transform-origin: center top;
+  animation: flipIn 0.3s ease-out forwards;
+}
+
+/* ==============================
+   动画：淡入淡出
+   ============================== */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.anim-fade-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: fadeOut 0.25s ease-in forwards;
+}
+.anim-fade-in {
+  position: relative;
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* ==============================
+   动画：缩放
+   ============================== */
+@keyframes zoomOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.5); opacity: 0; }
+}
+@keyframes zoomIn {
+  from { transform: scale(1.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.anim-zoom-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: zoomOut 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.anim-zoom-in {
+  position: relative;
+  animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ==============================
+   动画：模糊
+   ============================== */
+@keyframes blurOut {
+  from { filter: blur(0px); opacity: 1; transform: scale(1); }
+  to { filter: blur(10px); opacity: 0; transform: scale(0.9); }
+}
+@keyframes blurIn {
+  from { filter: blur(10px); opacity: 0; transform: scale(1.1); }
+  to { filter: blur(0px); opacity: 1; transform: scale(1); }
+}
+.anim-blur-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: blurOut 0.3s ease-in forwards;
+}
+.anim-blur-in {
+  position: relative;
+  animation: blurIn 0.3s ease-out forwards;
+}
+
+/* ==============================
+   动画：弹性
+   ============================== */
+.anim-elastic-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: slideOutUp 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+.anim-elastic-in {
+  position: relative;
+  animation: slideInUp 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* ==============================
+   动画：旋转
+   ============================== */
+@keyframes tumbleOut {
+  from { transform: rotateX(0) rotateY(0); opacity: 1; }
+  to { transform: rotateX(90deg) rotateY(45deg); opacity: 0; }
+}
+@keyframes tumbleIn {
+  from { transform: rotateX(-90deg) rotateY(-45deg); opacity: 0; }
+  to { transform: rotateX(0) rotateY(0); opacity: 1; }
+}
+.anim-tumble-out {
+  position: absolute;
+  top: 0; left: 0;
+  transform-origin: bottom center;
+  animation: tumbleOut 0.4s ease-in forwards;
+}
+.anim-tumble-in {
+  position: relative;
+  transform-origin: top center;
+  animation: tumbleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ==============================
+   动画：交换
+   ============================== */
+@keyframes swapOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100%); opacity: 0; }
+}
+@keyframes swapIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.anim-swap-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: swapOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.anim-swap-in {
+  position: relative;
+  animation: swapIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ==============================
+   动画：开门
+   ============================== */
+@keyframes doorOut {
+  from { transform: rotateY(0); opacity: 1; }
+  to { transform: rotateY(90deg); opacity: 0; }
+}
+@keyframes doorIn {
+  from { transform: rotateY(-90deg); opacity: 0; }
+  to { transform: rotateY(0); opacity: 1; }
+}
+.anim-door-out {
+  position: absolute;
+  top: 0; left: 0;
+  transform-origin: left center;
+  animation: doorOut 0.4s ease-in forwards;
+}
+.anim-door-in {
+  position: relative;
+  transform-origin: right center;
+  animation: doorIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ==============================
+   动画：故障
+   ============================== */
+@keyframes glitchOut {
+  0% { transform: translate(0); opacity: 1; }
+  20% { transform: translate(-2px, 2px); opacity: 0.8; }
+  40% { transform: translate(2px, -2px); opacity: 0.4; }
+  60% { transform: translate(-2px, -2px); opacity: 0.2; }
+  100% { transform: translate(0); opacity: 0; }
+}
+@keyframes glitchIn {
+  0% { transform: translate(0); opacity: 0; }
+  20% { transform: translate(2px, 2px); opacity: 0.4; }
+  40% { transform: translate(-2px, -2px); opacity: 0.8; }
+  60% { transform: translate(2px, -2px); opacity: 1; }
+  100% { transform: translate(0); opacity: 1; }
+}
+.anim-glitch-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: glitchOut 0.2s linear forwards;
+}
+.anim-glitch-in {
+  position: relative;
+  animation: glitchIn 0.2s linear forwards;
+}
+
+/* ==============================
+   动画：抖动
+   ============================== */
+@keyframes shakeOut {
+  0% { transform: translateX(0); opacity: 1; }
+  25% { transform: translateX(-5px); opacity: 0.8; }
+  50% { transform: translateX(5px); opacity: 0.5; }
+  75% { transform: translateX(-5px); opacity: 0.2; }
+  100% { transform: translateX(0); opacity: 0; }
+}
+@keyframes shakeIn {
+  0% { transform: translateX(0); opacity: 0; }
+  25% { transform: translateX(5px); opacity: 0.5; }
+  50% { transform: translateX(-5px); opacity: 0.8; }
+  75% { transform: translateX(5px); opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.anim-shake-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: shakeOut 0.3s ease-in forwards;
+}
+.anim-shake-in {
+  position: relative;
+  animation: shakeIn 0.3s ease-out forwards;
+}
+
+/* ==============================
+   动画：滚动
+   ============================== */
+@keyframes rollOut {
+  from { transform: translateX(0) rotate(0); opacity: 1; }
+  to { transform: translateX(-100%) rotate(-120deg); opacity: 0; }
+}
+@keyframes rollIn {
+  from { transform: translateX(100%) rotate(120deg); opacity: 0; }
+  to { transform: translateX(0) rotate(0); opacity: 1; }
+}
+.anim-roll-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: rollOut 0.4s ease-in forwards;
+}
+.anim-roll-in {
+  position: relative;
+  animation: rollIn 0.4s ease-out forwards;
+}
+
+/* ==============================
+   动画：霓虹
+   ============================== */
+@keyframes neonOut {
+  0% { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+  20% { opacity: 0.8; text-shadow: none; }
+  40% { opacity: 0.6; text-shadow: 0 0 5px rgba(255,255,255,0.4); }
+  100% { opacity: 0; text-shadow: none; }
+}
+@keyframes neonIn {
+  0% { opacity: 0; text-shadow: none; }
+  60% { opacity: 0.8; text-shadow: none; }
+  80% { opacity: 0.5; text-shadow: 0 0 5px rgba(255,255,255,0.4); }
+  100% { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+}
+.anim-neon-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: neonOut 0.3s ease-in forwards;
+}
+.anim-neon-in {
+  position: relative;
+  animation: neonIn 0.3s ease-out forwards;
+}
+
+/* ==============================
+   动画：掉落
+   ============================== */
+@keyframes dropOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 0; }
+}
+@keyframes dropIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.anim-drop-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: dropOut 0.3s cubic-bezier(0.5, 0, 1, 1) forwards;
+}
+.anim-drop-in {
+  position: relative;
+  animation: dropIn 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* ==============================
+   动画：弹跳
+   ============================== */
+@keyframes bounceOut {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.3); opacity: 0; }
+}
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+.anim-bounce-out {
+  position: absolute;
+  top: 0; left: 0;
+  animation: bounceOut 0.25s ease-in forwards;
+}
+.anim-bounce-in {
+  position: relative;
+  animation: bounceIn 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}

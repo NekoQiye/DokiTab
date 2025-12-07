@@ -1,0 +1,126 @@
+
+.welcome-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  z-index: 200000; /* 高z-index确保在一切之上 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.welcome-modal-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.829);
+  width: 500px;
+  max-width: 90%;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 10px 60px rgb(255, 255, 255), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  text-align: center;
+  overflow: visible; /* 允许猫猫超出容器 */
+  animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.welcome-neko-container {
+  position: absolute;
+  left: -100px; /* 根据图片大小调整 */
+  top: 40%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.welcome-neko {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+}
+
+.welcome-text-container {
+  position: relative;
+  z-index: 2;
+  margin-left: 60px; /* 给猫猫留位置 */
+}
+
+.welcome-title {
+  font-size: 28px;
+  color: #9dadf3; /* 蓝色-500 */
+  margin-bottom: 16px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(55, 0, 255, 0.267);
+}
+
+.welcome-message {
+  font-size: 16px;
+  color: #4b5563; /* 灰色-600 */
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.welcome-close-btn {
+  background: linear-gradient(135deg, #8377f3, #6175e4);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(72, 97, 236, 0.39);
+}
+
+.welcome-close-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(91, 76, 228, 0.4);
+}
+
+.welcome-close-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px) scale(0.9); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+  .welcome-modal-content {
+    width: 90%;
+    padding: 30px 20px;
+  }
+  
+  .welcome-neko-container {
+    width: 120px;
+    height: 120px;
+    left: -40px;
+    bottom: -20px;
+  }
+  
+  .welcome-text-container {
+    margin-left: 0;
+  }
+
+  .welcome-title {
+    font-size: 24px;
+  }
+  
+  .welcome-message {
+    font-size: 14px;
+  }
+}
