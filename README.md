@@ -6,7 +6,7 @@
 
 ![GPL-3.0 License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)
 
-<img src="gif/demo.gif" width="800" alt="演示动画">
+<img src="gif/demo.gif" width="800" alt="演示">
 
 </div>
 
@@ -17,12 +17,12 @@
 ### 1. 极致的交互效果
 
 <div align="center">
-<img src="gif/fx.gif" width="600" alt="交互特效展示">
+<img src="gif/fx.gif" width="600" alt="交互特效">
 </div>
 
 - **动态背景**：支持自定义图片或视频作为背景，可调节模糊度、遮罩浓度和页面内阴影，打造专属氛围~
 - **交互反馈**：本项目大部分按钮都有较为美观的鼠标交互反馈哦~
-- **交互特效**：内置多种可选的输入框打字特效和鼠标跟随特效，让交互不再单调
+- **交互特效**：内置多种可选的输入框打字特效和鼠标跟随特效，让交互不再单调~
 
 ---
 
@@ -30,14 +30,14 @@
 
 #### 快捷方式列表
 <div align="center">
-<img src="gif/icons.gif" width="600" alt="快捷方式列表展示">
+<img src="gif/icons.gif" width="600" alt="快捷方式列表">
 </div>
 
-自由添加常用网站快捷方式，支持自定义图标、网格列数和间距
+自由添加常用网站快捷方式，支持自定义图标、网格列数和间距呢
 
 #### 🎨 自定义图标
 <div align="center">
-<img src="gif/icon2.gif" width="600" alt="图标编辑展示">
+<img src="gif/icon2.gif" width="600" alt="图标编辑">
 </div>
 
 - 图标可以自定义为任何图片（支持动图）
@@ -48,28 +48,28 @@
 
 #### ⚙️ 侧边栏设置
 <div align="center">
-<img src="gif/sidebar.gif" width="600" alt="侧边栏展示">
+<img src="gif/sidebar.gif" width="600" alt="侧边栏">
 </div>
 
 通过直观的侧边栏面板，实时调整所有参数
 
 #### 🕐 自定义时钟
 <div align="center">
-<img src="gif/clock.gif" width="600" alt="时钟展示">
+<img src="gif/clock.gif" width="600" alt="时钟">
 </div>
 
 高度可定制的时钟组件，支持显示日期、星期、秒数，可调节字体大小、颜色、粗细和数字切换动画
 
 #### 🔍 搜索栏
 <div align="center">
-<img src="gif/search.gif" width="600" alt="搜索栏展示">
+<img src="gif/search.gif" width="600" alt="搜索栏">
 </div>
 
-支持多种搜索引擎切换，可调节宽度和透明度，甚至在简洁模式下隐藏
+支持多种搜索引擎切换，可调节宽度和透明度，甚至在简洁模式下隐藏呐
 
 #### 💾 数据持久化
 <div align="center">
-<img src="gif/save.png" width="600" alt="数据存储展示">
+<img src="gif/save.png" width="600" alt="数据存储">
 </div>
 
 - 所有配置自动保存到本地
@@ -79,10 +79,10 @@
 
 #### 🎯 Dock 栏
 <div align="center">
-<img src="gif/dock.gif" width="600" alt="Dock栏展示">
+<img src="gif/dock.gif" width="600" alt="Dock栏">
 </div>
 
-美观的底部 Dock 栏，放置最常用的应用，支持鼠标悬停放大效果，还可以自定义 1×1 ~ 1×6 的超宽图标
+美观的底部 Dock 栏，放置最常用的应用，支持鼠标悬停放大效果，还可以自定义 1×1 ~ 1×6 的超宽图标的说
 
 #### 🌙 简洁模式
 
@@ -93,7 +93,7 @@
 ### 3. 猫猫，好耶！
 
 <div align="center">
-<img src="gif/neko.gif" width="600" alt="猫猫展示">
+<img src="gif/neko.gif" width="600" alt="猫猫">
 </div>
 
 - **猫猫陪伴**：内置可爱的猫猫，陪伴你的每一次浏览
@@ -105,7 +105,7 @@
 ### 4. DokiDoki 终端
 
 <div align="center">
-<img src="gif/termina.png" width="600" alt="终端展示">
+<img src="gif/termina.png" width="600" alt="终端">
 </div>
 
 - **终端模拟**：内置一个形似 Linux 终端的终端，支持 Linux 命令，不过没有什么用，只是为了好玩 w
@@ -232,3 +232,8 @@ npm run build
 [![Star History Chart](https://api.star-history.com/svg?repos=NekoQiye/DokiTab&type=Date)](https://star-history.com/#NekoQiye/DokiTab&Date)
 
 </div>
+
+<details>
+<summary>碎碎念QAQ（点击展开）</summary>
+为什么AI说我的文档有70%的概率是AI生成的啦....难道说我是AI嘛QAQ？
+</details>
