@@ -230,7 +230,7 @@ npm run build
 
 ### 用的开心呐，别忘了给祈烨点个 Star 喵~ 🌸
 
-[![Star History Chart](https://api.star-history.com/svg?repos=NekoQiye/DokiTab&type=Date)](https://star-history.com/#NekoQiye/DokiTab&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=NekoQiye/DokiTab&type=date&legend=top-left)](https://www.star-history.com/#NekoQiye/DokiTab&type=date&legend=top-left)
 
 </div>
 
