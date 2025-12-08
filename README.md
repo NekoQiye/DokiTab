@@ -3,7 +3,8 @@
 # 🌸 DokiTab - 更美观，更轻量的新标签页 🌸
 
 > DokiTab~ 一款高度可定制的浏览器新标签页扩展~
-> ![GPL-3.0 License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)
+
+![GPL-3.0 License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)
 
 <img src="gif/demo.gif" width="800" alt="演示动画">
 
