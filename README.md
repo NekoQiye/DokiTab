@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌸 DokiTab - 更美观，更轻量的新标签页 🌸
+# DokiTab - 更美观，更轻量的新标签页
 
 > DokiTab~ 一款高度可定制的浏览器新标签页扩展~
 
@@ -228,7 +228,7 @@ npm run build
 
 <div align="center">
 
-### 用的开心呐，别忘了给祈烨点个 Star 喵~ 🌸
+### 用的开心呐，别忘了给祈烨点个 Star 喵~ 
 
 [![Star History Chart](https://api.star-history.com/svg?repos=NekoQiye/DokiTab&type=date&legend=top-left)](https://www.star-history.com/#NekoQiye/DokiTab&type=date&legend=top-left)
 
